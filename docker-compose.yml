@@ -10,6 +10,8 @@ services:
       - .env
     ports:
       - "8000:8000"
+    depends_on:
+      - db
     networks:
       - todo_network
   
@@ -31,7 +33,7 @@ services:
     env_file:
       - .env
     ports:
-      - "5454:5454"
+      - "5432:5432"
     networks:
       - todo_network
     volumes:
