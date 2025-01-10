@@ -1,0 +1,45 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: todo_api
+    volumes:
+      - ./api/:/api/
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - todo_network
+  
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: todo_web
+    ports:
+      - 80:80
+    volumes:
+      - ./web/:/usr/share/nginx/html
+    networks:
+      - todo_network
+
+  db:
+    image: postgres:12.5-alpine
+    container_name: todo_db
+    env_file:
+      - .env
+    ports:
+      - "5454:5454"
+    networks:
+      - todo_network
+    volumes:
+      - db:/var/lib/postgres
+
+volumes:
+  db:
+
+networks:
+  todo_network:
+    driver: bridge
