@@ -16,12 +16,15 @@
       <section class="add-task">
         <div class="controls">
           <button id="add-task-btn" class="primary-btn">+ Add Task</button>
-          <select id="filter-status" class="filter-select">
-            <option value="all">All</option>
-            <option value="pendente">Pendente</option>
-            <option value="em andamento">Em andamento</option>
-            <option value="concluída">Concluída</option>
-          </select>
+          <div>
+            <select id="filter-status" class="filter-select">
+              <option value="all">All</option>
+              <option value="pendente">Pendente</option>
+              <option value="em andamento">Em andamento</option>
+              <option value="concluída">Concluída</option>
+            </select>
+            <button id="filter-button" class="primary-btn">Filter</button>
+          </div>
         </div>
       </section>
       <section id="task-list" class="task-list">

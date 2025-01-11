@@ -16,8 +16,13 @@ def create_task(task: TaskCreate, db: Session = Depends(get_db), current_token: 
     return db_task
 
 @router.get("/tasks/", response_model=list[TaskResponse])
-def read_tasks(skip: int = 0, limit: int = 10, db: Session = Depends(get_db), current_token: dict = Depends(get_current_token)):
-    tasks = db.query(Task).offset(skip).limit(limit).all()
+def read_tasks(skip: int = 0, limit: int = 10, status: str = None, db: Session = Depends(get_db), current_token: dict = Depends(get_current_token)):
+    
+    if status:
+        tasks = db.query(Task).filter(Task.status == status).offset(skip).limit(limit)
+    else: 
+        tasks = db.query(Task).offset(skip).limit(limit).all()
+        
     return tasks
 
 @router.get("/tasks/{task_id}", response_model=TaskResponse)

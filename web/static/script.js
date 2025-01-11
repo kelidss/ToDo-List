@@ -1,12 +1,20 @@
 const API_URL = "http://127.0.0.1:8000/tasks/";
 
-// Carregar as tarefas ao iniciar
-document.addEventListener("DOMContentLoaded", loadTasks);
+document.addEventListener("DOMContentLoaded", () => { loadTasks(); });
 
 const addTaskBtn = document.getElementById("add-task-btn");
 const taskModal = document.getElementById("task-modal");
 const closeBtn = document.getElementsByClassName("close-btn")[0];
 const taskForm = document.getElementById("task-form");
+const filterButton = document.getElementById("filter-button");
+const filterStatus = document.getElementById("filter-status");
+
+filterButton.addEventListener('click', () => {
+  const status = document.getElementById('filter-status').value;
+
+  loadTasks(status);
+});
+
 
 addTaskBtn.onclick = function() {
   openModal();
@@ -32,10 +40,17 @@ taskForm.addEventListener("submit", function(event) {
   }
 });
 
-async function loadTasks() {
+async function loadTasks(status = "") {
   const tasksList = document.getElementById("tasks-container");
   tasksList.innerHTML = "";
-  const response = await fetch(API_URL);
+
+  url = API_URL;
+
+  if (status != "" && status != "all") {
+    url += `?status=${status}`;
+  }
+  const response = await fetch(url);
+
   const tasks = await response.json();
 
   tasks.forEach(task => {

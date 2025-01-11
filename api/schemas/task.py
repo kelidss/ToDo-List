@@ -6,7 +6,7 @@ from datetime import datetime
 class TaskCreate(BaseModel):
     title: str
     description: Optional[str] = None
-    status: str = Field(..., pattern="^(pendente|em andamento|concluída)$")
+    status: str = Field(..., pattern="^(pendente|em andamento|concluida)$")
 
 
 class TaskResponse(BaseModel):
