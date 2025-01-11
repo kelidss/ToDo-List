@@ -6,7 +6,13 @@ from models.task import Base
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(
+    title="Gerenciador de Tarefas API",
+    description="API para gerenciar tarefas com autenticação JWT",
+    version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc"
+)
 
 origins = [
     "https://localhost",
