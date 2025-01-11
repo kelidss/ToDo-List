@@ -4,7 +4,7 @@ COPY ./index.html /usr/share/nginx/html/index.html
 
 COPY ./static/ /usr/share/nginx/html/static/
 
-COPY ./nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY ./docker/nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 EXPOSE 80
 
