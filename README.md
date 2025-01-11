@@ -45,7 +45,6 @@ A autenticação é feita utilizando JWT. O token é gerado e verificado pelo m�
 
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [SQLAlchemy](https://www.sqlalchemy.org/)
-- [PostgreSQL](https://www.postgresql.org/)
 - [Docker](https://www.docker.com/)
 - [Nginx](https://www.nginx.com/)
 
