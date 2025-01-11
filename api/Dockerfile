@@ -6,7 +6,7 @@ COPY requirements.txt requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /api
+# COPY . /api
 
 EXPOSE 8000
 
